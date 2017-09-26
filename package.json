@@ -1,0 +1,20 @@
+{
+  "name": "mathjax",
+  "version": "2.7.2",
+  "description": "",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sshpass -p $DEPLOY_PASSWORD rsync -vaz --delete --rsh=\"ssh -l $DEPLOY_USERNAME\" ./* $DEPLOY_TARGET/mathjax"    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sr258/mathjax.git"
+  },
+  "author": "S. Rettig, MathJax Consortium",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sr258/mathjax/issues"
+  },
+  "homepage": "https://github.com/sr258/mathjax#readme"
+}
