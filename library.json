@@ -1,0 +1,16 @@
+{
+  "title": "MathJax",
+  "contentType": "library",
+  "majorVersion": 2,
+  "minorVersion": 7,
+  "patchVersion": 2,
+  "runnable": 0,
+  "machineName": "MathJax",
+  "author": "MathJax Consortium",
+  "license": "Apache 2.0",
+  "preloadedJs": [
+    {
+      "path": "js/MathJax.js"
+    }
+  ]
+}
