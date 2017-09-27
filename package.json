@@ -5,7 +5,7 @@
   "main": "entry.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sshpass -p $DEPLOY_PASSWORD rsync -vaz --delete --rsh=\"ssh -l $DEPLOY_USERNAME\" ./* $DEPLOY_TARGET/mathjax"    
+    "deploy": "rsync -vaz --delete ./* $DEPLOY_TARGET/mathjax"    
   },
   "repository": {
     "type": "git",

@@ -24,14 +24,10 @@ H5P.MathJax = (function ($) {
    * @return 
    */
   MathJax.load = function () {
-    /*    var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src  = "js/MathJax.js?config=TeX-AMS_CHTML";
-        document.getElementsByTagName("head")[0].appendChild(script);
-      */
-    var location = document.currentScript.src;
-    console.debug(location);
-    $.getScript("js/MathJax.js?config=TeX-AMS_CHTML", function () {
+    var jsFileLocation = $('script[src*=entry]').attr('src');
+    jsFileLocation = jsFileLocation.replace(/entry\.js.*$/, '') 
+    console.debug(jsFileLocation);
+    $.getScript(jsFileLocation + "js/MathJax.js?config=TeX-AMS_CHTML", function () {
 
     });
   };
