@@ -44,7 +44,7 @@ H5P.MathJax = (function ($) {
   /* Public static functions */
 
   /**
-   * Create a tip icon
+   * Load the MathJax library
    * @method H5P.MathJax.load
    * @return 
    */
