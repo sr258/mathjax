@@ -25,11 +25,11 @@ H5P.MathJax = (function ($) {
   }
 
   var getCurrentPath = function () {
-    var jsFileLocation = $('script[src*=entry]').attr('src');
+    var jsFileLocation = $('script[src*=mathjax-entry]').attr('src');
     if (!jsFileLocation) {
       return undefined;
     }
-    jsFileLocation = jsFileLocation.replace(/entry\.js.*$/, '')
+    jsFileLocation = jsFileLocation.replace(/mathjax-entry\.js.*$/, '')
 
     return jsFileLocation;
   }
