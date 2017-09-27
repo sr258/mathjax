@@ -16,6 +16,31 @@ H5P.MathJax = (function ($) {
    */
   function MathJax() { }
 
+  /* Private functions */
+  var configureMathJax = function () {
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: "none"
+    };
+  }
+
+  var getCurrentPath = function () {
+    var jsFileLocation = $('script[src*=entry]').attr('src');
+    if (!jsFileLocation) {
+      return undefined;
+    }
+    jsFileLocation = jsFileLocation.replace(/entry\.js.*$/, '')
+
+    return jsFileLocation;
+  }
+
+  var loadMathJax = function(path) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = path + "js/MathJax.js?config=TeX-AMS_CHTML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+
   /* Public static functions */
 
   /**
@@ -24,12 +49,12 @@ H5P.MathJax = (function ($) {
    * @return 
    */
   MathJax.load = function () {
-    var jsFileLocation = $('script[src*=entry]').attr('src');
-    jsFileLocation = jsFileLocation.replace(/entry\.js.*$/, '') 
-    console.debug(jsFileLocation);
-    $.getScript(jsFileLocation + "js/MathJax.js?config=TeX-AMS_CHTML", function () {
+    var currentPath = getCurrentPath();
+    if (!currentPath)
+      return;
 
-    });
+    configureMathJax();    
+    loadMathJax(currentPath);
   };
 
   return MathJax;
