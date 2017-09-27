@@ -14,7 +14,7 @@ H5P.MathJax = (function ($) {
    * @class H5P.MathJax
    * @static
    */
-  function MathJax() {}
+  function MathJax() { }
 
   /* Public static functions */
 
@@ -24,10 +24,16 @@ H5P.MathJax = (function ($) {
    * @return 
    */
   MathJax.load = function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "js/MathJax.js?config=TeX-AMS_CHTML";
-    document.getElementsByTagName("head")[0].appendChild(script);
+    /*    var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "js/MathJax.js?config=TeX-AMS_CHTML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+      */
+    var location = document.currentScript.src;
+    console.debug(location);
+    $.getScript("js/MathJax.js?config=TeX-AMS_CHTML", function () {
+
+    });
   };
 
   return MathJax;
