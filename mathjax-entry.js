@@ -28,7 +28,8 @@ H5P.MathJax = (function ($) {
   /* Private functions */
 
   /**
-   * Configures MathJax
+   * Configures MathJax  
+   * @param  {Node} container The node to which the rendering should be limited.
    */
   var configureMathJax = function (container) {
     window.MathJax = {
