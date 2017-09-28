@@ -23,18 +23,22 @@ H5P.MathJax = (function ($) {
   /**
    * The id of the currently running timer used for throtteling MathJax requests.
    */
-  var runningThrottleTimeoutId = null;    
+  var runningThrottleTimeoutId = null;
 
   /* Private functions */
-  
+
   /**
    * Configures MathJax
    */
-  var configureMathJax = function () {
+  var configureMathJax = function (container) {
     window.MathJax = {
       showProcessingMessages: false,
       messageStyle: "none"
     };
+
+    if (container) {
+      window.MathJax.container = container;
+    }
   }
 
   /**
@@ -54,7 +58,7 @@ H5P.MathJax = (function ($) {
   /**
    * Loads MathJax.
    * @param {string} path The path to the root directory of this library.
-   */  
+   */
   var loadMathJax = function (path) {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -70,17 +74,17 @@ H5P.MathJax = (function ($) {
     if (MathJax.Hub)
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, node]);
   };
-  
+
   /**
    * Updates the container's descendants but throttles the updates to reduce CPU load.
    * @param  {Node} container The node whose descendants should be updated.
    */
   var throttledJaxUpdate = function (container) {
     if (!runningThrottleTimeoutId) {
-      runningThrottleTimeoutId = setTimeout(function () {            
-          doJax(container);            
+      runningThrottleTimeoutId = setTimeout(function () {
+        doJax(container);
         runningThrottleTimeoutId = null;
-      }, throttleTime); 
+      }, throttleTime);
     }
   };
 
@@ -117,7 +121,7 @@ H5P.MathJax = (function ($) {
     if (!currentPath)
       return;
 
-    configureMathJax();
+    configureMathJax(container);
     loadMathJax(currentPath);
     setupObserver(container);
   };

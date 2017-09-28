@@ -1,2 +1,3 @@
-☐ limit MathJax to container element
-☐ apply MathJax to dynamically added / changed elements in DOM
+☐ avoid that mathjax 'Typeset' is queued when MathJax is still rendering the initial run.
+✔ limit MathJax to container element
+✔ apply MathJax to dynamically added / changed elements in DOM
