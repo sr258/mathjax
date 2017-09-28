@@ -14,7 +14,7 @@ H5P.MathJax = (function ($) {
    * @class H5P.MathJax
    * @static
    */
-  function MathJax() { }
+  function MathJaxLib() { }
 
   /* Private functions */
   var configureMathJax = function () {
@@ -47,18 +47,24 @@ H5P.MathJax = (function ($) {
   };
 
   var setupObserver = function (container) {
-
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
     if (MutationObserver) {
+      var running = false;
+      var limitedResize = function (nodes) {
+        if (!running) {
+          running = setTimeout(function () {
+            
+              doJax(container);            
+            running = null;
+          }, 500); // 2 fps cap
+        }
+      };
 
       var observer = new MutationObserver(function (mutations) {
         for (var i = 0; i < mutations.length; i++) {
           if (mutations[i].addedNodes.length) {
-            for (var x = 0; x < mutations[i].addedNodes.length; x++) {
-              $('*', mutations[i].addedNodes[x]).each(function (j, m) {
-                doJax(m.parentNode);
-              });
-            }
+            limitedResize();
+            return;
           }
         }
       });
@@ -76,7 +82,7 @@ H5P.MathJax = (function ($) {
    * @method H5P.MathJax.load
    * @return 
    */
-  MathJax.load = function (container) {
+  MathJaxLib.load = function (container) {
     var currentPath = getCurrentPath();
     if (!currentPath)
       return;
@@ -86,5 +92,5 @@ H5P.MathJax = (function ($) {
     setupObserver(container);
   };
 
-  return MathJax;
+  return MathJaxLib;
 })(H5P.jQuery);
