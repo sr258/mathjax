@@ -4,4 +4,4 @@ This is an H5P library that wraps around MathJax and enables the use of mathemat
 
 Usage
 -----
-To use the library it must be referenced in `library.json` and initialized by calling `H5P.MathJax.load()`. A good place for this is in initialization functions like `attach()`.
+To use the library it must be referenced in `library.json` and initialized by calling `H5P.MathJax.load(container)`. A good place for this is in initialization functions like `attach()`.
