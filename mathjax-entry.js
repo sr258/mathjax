@@ -127,5 +127,7 @@ H5P.MathJax = (function ($) {
     setupObserver(container);
   };
 
+  MathJaxLib.load($('body').get(0));
+
   return MathJaxLib;
 })(H5P.jQuery);
