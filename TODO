@@ -1,5 +1,8 @@
 ☐ avoid that mathjax 'Typeset' is queued when MathJax is still rendering the initial run.
-☐ try to remove visible step-by-step rendering
+☐ try to remove visible step-by-step rendering (very slow on own live test server, seems to be the loading of fonts)
+    MathJax_Main-regular.woff
+    MathJax_Main-Regular.otf missing
+☐ issues with multi-choice and true-false in interactive videos
 ☐ check if re-rendering when changing the DOM can be further restricted to the actually changed parts of the DOM
 ☐ provide fallback for MutationObserver
 ☐ check if getting the path of the currently running js-file can be detected in a more elegant way.
